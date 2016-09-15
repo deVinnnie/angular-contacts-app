@@ -1,7 +1,9 @@
 import { ContactsDetailsController } from './contacts-details/contacts-details.controller';
 
-export function appConfig($routeProvider){
+export function appConfig($routeProvider, $locationProvider){
     console.log("App Config");
+
+    $locationProvider.html5Mode(true);
 
     $routeProvider.when("/contacts/add", {
         template: require('./contacts-add/contacts-add.html'),

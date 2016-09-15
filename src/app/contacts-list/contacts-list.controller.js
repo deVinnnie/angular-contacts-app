@@ -1,9 +1,9 @@
 export class ContactsListController{
 
-    constructor($http, $log, apiUrl){
+    constructor($http, $log, ContactsService){
         console.log("Constructing ContactsListController");
         this.$http = $http;
-        this.apiUrl = apiUrl;
+        this.ContactsService = ContactsService;
         this.$log = $log;
         this.init();
     }
@@ -38,18 +38,22 @@ export class ContactsListController{
 
         this.showList = true;
 
-        this.$http.get(`${this.apiUrl}?results=10&nat=nl`)
+        this.ContactsService.getContacts().then((result) => {
+            this.contacts = result;
+        });
+
+        /*this.$http.get(`${this.apiUrl}?results=10&nat=nl`)
                   .then(
                         (response) => {
                             this.$log.debug(response.data);
                             this.contacts = response.data.results;
                         }
-                  );
+                  );*/
     }
 
     toggleList(){
         this.showList = !this.showList;
     }
 
-    
+
 }

@@ -4,6 +4,7 @@ import 'angular-route';
 import { appConfig } from './app.config';
 import { ContactsListController } from './contacts-list/contacts-list.controller';
 import { ContactsAddController } from './contacts-add/contacts-add.controller';
+import { ContactsService } from './shared/contacts.service';
 
 var appModule = angular.module('contactsApp', ['ngRoute'])
          .config(appConfig)
@@ -14,5 +15,7 @@ var appModule = angular.module('contactsApp', ['ngRoute'])
             console.log(`Version: ${appVersion}`);
         })
         .controller('ContactsListController', ContactsListController)
-        .controller('ContactsAddController', ContactsAddController);
+        .controller('ContactsAddController', ContactsAddController)
+        .service('ContactsService', ContactsService);
+
 export default appModule.name;
