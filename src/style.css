@@ -1,0 +1,23 @@
+main, footer{
+    padding: 5em;
+    padding-top: 1em;
+}
+
+footer{
+    font-style: italic;
+}
+
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+
+}
+
+input.ng-dirty.ng-invalid{
+    border-color: #E00 !important;
+    border-bottom: 3px solid #E00 !important;
+}
+
+input.ng-dirty.ng-valid{
+    border-bottom: 3px solid #129FEA;
+}

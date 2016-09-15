@@ -1,11 +1,10 @@
-import angular from 'angular';
+import 'jquery/dist/jquery.js';
+import 'purecss/build/pure-min.css';
+import './style.css';
 
-import {hello} from './app/hello';
+import 'angular';
+import 'angular-i18n/angular-locale_nl-be';
 
-import './index.css';
+import appModule from './app/app.module';
 
-export const app = 'app';
-
-angular
-  .module(app, [])
-  .component('app', hello);
+angular.bootstrap(document, [appModule]);
