@@ -13,78 +13,22 @@
         <div class="pure-menu pure-menu-horizontal custom-restricted-width" style="display: inline-block;">
             <span class="pure-menu-heading">Angular Contacts App</span>
             <ul class="pure-menu-list">
-               <li class="pure-menu-item"><a href="#" class="pure-menu-link">List</a></li>
-               <li class="pure-menu-item"><a href="#" class="pure-menu-link">Other</a></li>
+               <li class="pure-menu-item">
+                   <a href="/#/contacts" class="pure-menu-link">
+                       <i class="material-icons">list</i>
+                       List
+                   </a>
+               </li>
+               <li class="pure-menu-item">
+                   <a href="/#/contacts/add" class="pure-menu-link">
+                    <i class="material-icons">add_circle</i>
+                    Add
+                    </a>
+               </li>
             </ul>
         </div>
 
-        <main ng-controller="ContactsListController as ctrl">
-            <h1>{{ ctrl.title }}</h1>
-
-            <form class="pure-form pure-form-aligned"
-                novalidate name="addForm" ng-submit="ctrl.addContact(newContact)">
-                <fieldset>
-                    <div class="pure-control-group">
-                        <label for="firstName">First Name</label>
-                        <input id="firstName" placeholder="First Name"
-                                type="text" required ng-model="newContact.firstName"
-                                ng-minlength="2"/>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label for="lastName">Last Name</label>
-                        <input id="lastName" placeholder="Last Name" type="text" required ng-model="newContact.lastName"/>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label for="email">Email</label>
-                        <input id="email" placeholder="Emailaddress" type="email" required ng-model="newContact.email"/>
-                    </div>
-
-                    <div class="pure-controls">
-                        <button type="submit" class="button pure-button pure-button-primary"
-                                ng-disabled="addForm.$invalid">
-                            Add Contact
-                        </button>
-                    </div>
-            </form>
-
-            <!--<p>
-                {{ addForm.$error | json }}
-            </p>-->
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <button ng-click="ctrl.toggleList()" ng-class="{success : !ctrl.showList}"
-                    class="pure-button pure-button-primary">
-                    Toggle List
-            </button>
-
-            <table ng-if="ctrl.showList" class="pure-table pure-table-horizontal">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr ng-repeat="person in ctrl.contacts" ng-class-odd="'pure-table-odd'">
-                        <td>
-                            {{ $index + 1 }}
-                        </td>
-                        <td>
-                            {{ person.name.first }} {{ person.name.last }}
-                        </td>
-                        <td>{{ person.email }}</td>
-                        <!--<p>{{ $first }}</p>
-                        <p>{{ $middle }}</p>
-                        <p>{{ $odd }}</p>-->
-                    </tr>
-                </tbody>
-            </table>
-        </main>
+        <main ng-view></main>
 
         <footer>
             <p>1 + 1 is still {{ 1 + 1 }}</p>

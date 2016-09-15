@@ -1,0 +1,35 @@
+<div ng-controller="ContactsListController as ctrl">
+    <h1>{{ ctrl.title }}</h1>
+<button ng-click="ctrl.toggleList()" ng-class="{success : !ctrl.showList}"
+        class="pure-button pure-button-primary">
+        Toggle List
+</button>
+
+<table ng-if="ctrl.showList" class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="person in ctrl.contacts" ng-class-odd="'pure-table-odd'">
+            <td>
+                <img ng-src="{{ person.picture.thumbnail }}" alt="Hello"/>
+            </td>
+            <!--<td>
+                {{ $index + 1 }}
+            </td>-->
+            <td>
+                {{ person.name.first }} {{ person.name.last }}
+            </td>
+            <td>{{ person.email }}</td>
+            <!--<p>{{ $first }}</p>
+            <p>{{ $middle }}</p>
+            <p>{{ $odd }}</p>-->
+        </tr>
+    </tbody>
+</table>
+</div>

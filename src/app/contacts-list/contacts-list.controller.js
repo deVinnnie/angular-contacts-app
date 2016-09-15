@@ -1,7 +1,10 @@
 export class ContactsListController{
 
-    constructor(){
+    constructor($http, $log, apiUrl){
         console.log("Constructing ContactsListController");
+        this.$http = $http;
+        this.apiUrl = apiUrl;
+        this.$log = $log;
         this.init();
     }
 
@@ -10,7 +13,7 @@ export class ContactsListController{
         this.title = "Contacts List";
 
         this.contacts = [
-            {
+            /*{
                 name : {
                     first: 'Luke',
                     last: 'Skywalker'
@@ -30,28 +33,23 @@ export class ContactsListController{
                     last: 'Solo'
                 },
                 email : 'han@corellia.com'
-            }
+            }*/
         ];
 
-
         this.showList = true;
+
+        this.$http.get(`${this.apiUrl}?results=10&nat=nl`)
+                  .then(
+                        (response) => {
+                            this.$log.debug(response.data);
+                            this.contacts = response.data.results;
+                        }
+                  );
     }
 
     toggleList(){
         this.showList = !this.showList;
     }
 
-    addContact(newContact){
-        var contact = {
-            name : {
-                first : newContact.firstName,
-                last : newContact.lastName
-            },
-            email: newContact.email
-        };
-        this.contacts.push(contact);
-        newContact.firstName = '';
-        newContact.lastName = '';
-        newContact.email = '';
-    }
+    
 }
