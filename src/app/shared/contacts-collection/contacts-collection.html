@@ -1,0 +1,25 @@
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="person in $ctrl.contacts" ng-class-odd="'pure-table-odd'">
+            <td>
+                <img ng-src="{{ person.picture.thumbnail }}" alt="Hello"/>
+            </td>
+            <td>
+                {{ person.name.first }} {{ person.name.last }}
+            </td>
+            <td>
+                <a ng-click="$ctrl.selected(person)">
+                    {{ person.email }}
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

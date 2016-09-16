@@ -1,12 +1,12 @@
-export class ContactsAddController{
+class ContactsAddController{
 
     constructor($log, $location){
         this.$log = $log;
         this.$location = $location;
-        this.init();
     }
 
-    init(){
+    $onInit(){
+
     }
 
     addContact(newContact){
@@ -27,4 +27,9 @@ export class ContactsAddController{
         // Redirect to another view
         this.$location.path("/contacts");
     }
+}
+
+export var ContactsAddComponent = {
+    template : require("./contacts-add.html"),
+    controller : ContactsAddController
 }

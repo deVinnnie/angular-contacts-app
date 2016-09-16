@@ -1,14 +1,14 @@
-export class ContactsListController{
+class ContactsListController{
 
-    constructor($http, $log, ContactsService){
+    constructor($http, $log, ContactsService, $location){
         console.log("Constructing ContactsListController");
         this.$http = $http;
         this.ContactsService = ContactsService;
         this.$log = $log;
-        this.init();
+        this.$location = $location;
     }
 
-    init(){
+    $onInit(){
         console.log("Initting ContactsListController");
         this.title = "Contacts List";
 
@@ -55,5 +55,13 @@ export class ContactsListController{
         this.showList = !this.showList;
     }
 
+    contactSelected(selectedContact){
+        this.$log.debug(selectedContact);
+        //this.$location.path(`/contacts/${selected}`)
+    }
+}
 
+export var ContactsListComponent = {
+    template : require('./contacts-list.html'),
+    controller : ContactsListController
 }
